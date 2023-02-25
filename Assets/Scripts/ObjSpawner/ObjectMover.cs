@@ -9,7 +9,8 @@ public class ObjectMover : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (!move) return;
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
         distanceTraveled += speed * Time.deltaTime;
         if (distanceTraveled >= maxDistance)
         {

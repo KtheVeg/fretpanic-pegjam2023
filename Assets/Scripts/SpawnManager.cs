@@ -21,12 +21,14 @@ public class SpawnManager : MonoBehaviour
         timeSinceLastSpawn = 0f;
         if (!spawnEnabled) return;
 
-        float numObj = Random.Range(spawnRateLow,spawnRateHigh);
-        switch (numObj) {
-            case >1:
-            
-        }
+        float numObjTest = Random.Range(spawnRateLow,spawnRateHigh);
+        int numObj = 0;
+        if (numObjTest >= 0.2) numObj++;
+        if (numObjTest >= 0.4) numObj++;
+        if (numObjTest >= 0.6) numObj++;
+        if (numObjTest >= 0.8) numObj++;
+        if (numObjTest >= 1) numObj++;
 
-
+        spawner.SpawnRandomRow(numObj);
     }
 }

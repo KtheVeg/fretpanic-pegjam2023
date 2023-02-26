@@ -28,7 +28,6 @@ public class Spawner : MonoBehaviour
     }
     public void SpawnRandomRow(int numOfObjects)
     {
-        int randomIndex = Random.Range(0, objects.Length);
         int[] takenPositions = new int[numOfObjects];
         for (int i = 0; i < numOfObjects; i++)
         {
@@ -38,8 +37,13 @@ public class Spawner : MonoBehaviour
                 rndPos = Random.Range(0, 6) + 1;
             }
             takenPositions[i] = rndPos + 1;
+        }
+
+        // Individual objects
+        for (int i=0; i < numOfObjects; i++) {
+            int randomIndex = Random.Range(0, objects.Length);
             GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
-            randomObject.transform.position = spawnOffset + new Vector3( -(rndPos-1) * offset, 0, 0);
+            randomObject.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
             randomObject.GetComponent<ObjectMover>().move = true;
             randomObject.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
         }

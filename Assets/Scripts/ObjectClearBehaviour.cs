@@ -32,7 +32,7 @@ public class ObjectClearBehaviour : MonoBehaviour
             return;
         }
         currentState += Time.deltaTime;
-        transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(3,3,3), currentState);
+        transform.localScale = Vector3.Lerp(Vector3.zero, new Vector3(1,1,1), currentState);
         gameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(colour, new Color(0,0,0,0), currentState);
     }
 

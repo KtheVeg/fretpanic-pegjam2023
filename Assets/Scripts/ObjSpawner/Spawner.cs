@@ -6,8 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] objects;
-    public GameObject[] objects2;
-    public GameObject[] objects4;
+    public GameObject[] powups;
     public Vector3 spawnOffset = Movement.startPostion;
     public float offset = Movement.offset;
     public float replacementChance = 0.5f;
@@ -41,11 +40,21 @@ public class Spawner : MonoBehaviour
 
         // Individual objects
         for (int i=0; i < numOfObjects; i++) {
-            int randomIndex = Random.Range(0, objects.Length);
-            GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
+            if (Random.Range(1,10) == 1)
+            {
+                int rndInd = Random.Range(0,2);
+                GameObject powup = GameObject.Instantiate(powups[rndInd]);
+                powup.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
+                powup.GetComponent<ObjectMover>().move = true;
+                powup.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
+            } else {
+                int randomIndex = Random.Range(0, objects.Length);
+             GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
             randomObject.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
             randomObject.GetComponent<ObjectMover>().move = true;
             randomObject.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
+            }
+            
         }
     }
 }

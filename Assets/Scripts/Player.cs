@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static int HP;
-    public static int score;
+    public static int HP = 3;
+    public static int score = 0;
     
 }

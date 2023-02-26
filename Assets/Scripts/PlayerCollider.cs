@@ -8,6 +8,7 @@ public class PlayerCollider : MonoBehaviour
     public GameObject shieldTex;
     public GameObject clearObj;
     public HitAudioManager HAM;
+    public BackgroundMusicManager bgmmgr;
     void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -19,7 +20,8 @@ public class PlayerCollider : MonoBehaviour
                 if (!shielded) {
                     Player.HP--;
                     if (Player.HP <= 0) {
-                            
+                        bgmmgr.Fail();
+                        
                     }
                 } else {shielded = false;}
                 shieldTex.SetActive(false);

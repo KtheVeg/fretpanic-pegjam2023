@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 96497118}
   - component: {fileID: 96497117}
   - component: {fileID: 96497116}
+  - component: {fileID: 96497119}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -220,6 +221,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96497114}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &96497119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96497114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74613f21031797945b672f206cb42a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  maxDistance: 30
+  move: 0
 --- !u!1 &239872171
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,9 +498,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a565f006d8e439e499c7de18c3b63c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects: []
+  objects:
+  - {fileID: 96497114}
+  objects2: []
+  objects4: []
   spawnOffset: {x: 0.5875, y: 0.3, z: -4.63}
   offset: 0.235
+  replacementChance: 0.5
 --- !u!114 &995389492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,10 +517,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130da14cd84059346ac2ba91ff49ac2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
-  spawnTime: 2
+  spawner: {fileID: 995389491}
+  spawnTime: 0.375
   spawnEnabled: 0
-  spawnRate: 0
+  spawnRateLow: 1
+  spawnRateHigh: 1
 --- !u!1 &1076696214
 GameObject:
   m_ObjectHideFlags: 0

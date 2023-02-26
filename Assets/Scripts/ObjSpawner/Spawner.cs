@@ -6,8 +6,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] objects;
+    public GameObject[] objects2;
+    public GameObject[] objects4;
     public Vector3 spawnOffset = Movement.startPostion;
     public float offset = Movement.offset;
+    public float replacementChance = 0.5f;
 
     void Start()
     {

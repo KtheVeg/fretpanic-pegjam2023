@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     public Vector3 spawnOffset = Movement.startPostion;
     public float offset = Movement.offset;
     public float replacementChance = 0.5f;
+    public float randomSpeedModifierLow = 10f;
+    public float randomSpeedModifierHigh = 10f;
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class Spawner : MonoBehaviour
             GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
             randomObject.transform.position = spawnOffset + new Vector3( -(rndPos-1) * offset, 0, 0);
             randomObject.GetComponent<ObjectMover>().move = true;
+            randomObject.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
         }
     }
 }

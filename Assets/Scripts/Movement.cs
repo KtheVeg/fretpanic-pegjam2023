@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    int lane = 0;
+    public static int lane = 0;
     public static Vector3 startPostion = new Vector3( 0.5875f, 0.3f, -4.63f);
     public static float offset = 0.235f;
 

@@ -9,6 +9,7 @@ public class PlayerCollider : MonoBehaviour
     public GameObject clearObj;
     public HitAudioManager HAM;
     public BackgroundMusicManager bgmmgr;
+    public MasterGameFlow MstGmeFlw;
     void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -21,7 +22,7 @@ public class PlayerCollider : MonoBehaviour
                     Player.HP--;
                     if (Player.HP <= 0) {
                         bgmmgr.Fail();
-                        
+                        MstGmeFlw.Fail();
                     }
                 } else {shielded = false;}
                 shieldTex.SetActive(false);
@@ -41,6 +42,7 @@ public class PlayerCollider : MonoBehaviour
                         clearObj.GetComponent<ObjectClearBehaviour>().ClearObjects(transform.position, new Color(0,255,0));
                     break;
                 }
+            GameObject.Destroy(other.gameObject);
             break;
         }
     }

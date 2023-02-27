@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using TMPro;
 
 public class MasterGameFlow : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MasterGameFlow : MonoBehaviour
     public bool ready = false;
     public GameObject difficultyText;
     public GameObject startScreen;
+    public GameObject failScreen;
     void Start()
     {
 
@@ -36,20 +38,20 @@ public class MasterGameFlow : MonoBehaviour
                 {
                     case Difficulty.Easy:
                         difficulty = Difficulty.Medium;
-                        difficultyText.GetComponent<TextMesh>().text = "Medium";
+                        difficultyText.GetComponent<TextMeshProUGUI>().text = "Medium";
 
                     break;
                     case Difficulty.Medium:
                         difficulty = Difficulty.Hard;
-                        difficultyText.GetComponent<TextMesh>().text = "Hard";
+                        difficultyText.GetComponent<TextMeshProUGUI>().text = "Hard";
                     break;
                     case Difficulty.Hard:
                         difficulty = Difficulty.Insane;
-                        difficultyText.GetComponent<TextMesh>().text = "Insane";
+                        difficultyText.GetComponent<TextMeshProUGUI>().text = "Insane";
                     break;
                     case Difficulty.Insane:
                         difficulty = Difficulty.Easy;
-                        difficultyText.GetComponent<TextMesh>().text = "Easy";
+                        difficultyText.GetComponent<TextMeshProUGUI>().text = "Easy";
                     break;
                 }
             }
@@ -100,8 +102,13 @@ public class MasterGameFlow : MonoBehaviour
         }
     }
 
-    void Fail()
+    public void Fail()
     {
-        
+        failScreen.SetActive(true);
+        GameObject[] stuff = GameObject.FindGameObjectsWithTag("Damage");
+        for (int i = 0; i < stuff.Length; i++)
+        {
+            GameObject.Destroy(stuff[i]);
+        }
     }
 }

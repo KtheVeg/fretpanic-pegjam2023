@@ -7,6 +7,7 @@ public class PlayerCollider : MonoBehaviour
     public bool shielded;
     public GameObject shieldTex;
     public GameObject clearObj;
+    public GameObject Cam;
     public HitAudioManager HAM;
     public BackgroundMusicManager bgmmgr;
     public MasterGameFlow MstGmeFlw;
@@ -20,6 +21,7 @@ public class PlayerCollider : MonoBehaviour
                 clearObj.GetComponent<ObjectClearBehaviour>().ClearObjects(transform.position, !shielded ? new Color(255,0,0) : new Color(0,0,255));
                 if (!shielded) {
                     Player.HP--;
+                    Cam.GetComponent<CameraShakeController>().Shake(0.5f, 0.1f, 500f, true);
                     if (Player.HP <= 0) {
                         bgmmgr.Fail();
                         MstGmeFlw.Fail();
@@ -31,7 +33,7 @@ public class PlayerCollider : MonoBehaviour
                 switch (other.gameObject.GetComponent<Powerup>().powerupType)
                 {
                     case PowType.HP:
-                        if (Player.HP > 3) Player.HP++; 
+                        if (Player.HP < 3) Player.HP++; 
                     break;
                     case PowType.Shield:
                         shielded = true;

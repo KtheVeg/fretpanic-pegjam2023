@@ -20,8 +20,7 @@ public class MasterGameFlow : MonoBehaviour
     public GameObject failScreen;
     void Start()
     {
-
-       
+        failScreen.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, Screen.height);
     }
     void Update()
     {
@@ -105,6 +104,7 @@ public class MasterGameFlow : MonoBehaviour
     public void Fail()
     {
         failScreen.SetActive(true);
+        spawnmgr.spawnEnabled = false;
         GameObject[] stuff = GameObject.FindGameObjectsWithTag("Damage");
         for (int i = 0; i < stuff.Length; i++)
         {

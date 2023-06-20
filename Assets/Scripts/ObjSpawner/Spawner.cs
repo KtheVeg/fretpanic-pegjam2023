@@ -40,19 +40,19 @@ public class Spawner : MonoBehaviour
 
         // Individual objects
         for (int i=0; i < numOfObjects; i++) {
-            if (Random.Range(1,10) == 1)
+            if (Random.Range(1,30) == 1)
             {
-                int rndInd = Random.Range(0,2);
+                int rndInd = Random.Range(0,3);
                 GameObject powup = GameObject.Instantiate(powups[rndInd]);
                 powup.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
                 powup.GetComponent<ObjectMover>().move = true;
                 powup.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
             } else {
                 int randomIndex = Random.Range(0, objects.Length);
-             GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
-            randomObject.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
-            randomObject.GetComponent<ObjectMover>().move = true;
-            randomObject.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
+                GameObject randomObject = GameObject.Instantiate(objects[randomIndex]);
+                randomObject.transform.position = spawnOffset + new Vector3( -(takenPositions[i]-2) * offset, 0, 0);
+                randomObject.GetComponent<ObjectMover>().move = true;
+                randomObject.GetComponent<ObjectMover>().speed = Random.Range(randomSpeedModifierLow,randomSpeedModifierHigh);
             }
             
         }
